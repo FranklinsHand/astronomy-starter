@@ -1,0 +1,165 @@
+backend:
+  name: git-gateway
+  branch: main # Branch to update (optional; defaults to master)
+
+# This line should *not* be indented
+media_folder: "_public/files"
+public_folder: "/files"
+
+# Please run "npx netlify-cms-proxy-server" for local backend
+local_backend: true
+
+# May be used by the CMS for various functionality. Used together with a collection's preview_path to creat links to live content
+site_url: https://thirdstreetec.netlify.app
+
+# When the logo_url is specified, the CMS UI will change the logo displayed at the top of the login page, allowing you to brand the CMS with you own logo
+logo_url: https://thirdstreetec.netlify.app/icons/logo.png
+
+# The CMS locale. Defaults to en
+locale: 'en'
+
+
+collections:
+  - name: "individual" # Used in routes, e.g., /admin/collections/blog
+    label: "Individual" # Used in the UI
+    folder: "/_src/_includes/individual" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collpased: false
+        fields:
+            - {label: "Hero Link", name: "heroLink", widget: "string", required: false}
+            - {label: "Hero Goal", name: "heroGoal", widget: "string", required: false}
+            - {label: "Hero Summary", name: "heroSummary", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "academy" # Used in routes, e.g., /admin/collections/blog
+    label: "Academy" # Used in the UI
+    folder: "/_src/_includes/academy" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collpased: false
+        fields:
+            - {label: "Hero Link", name: "heroLink", widget: "string", required: false}
+            - {label: "Hero Goal", name: "heroGoal", widget: "string", required: false}
+            - {label: "Hero Summary", name: "heroSummary", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "business" # Used in routes, e.g., /admin/collections/blog
+    label: "Business" # Used in the UI
+    folder: "/_src/_includes/business" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collpased: false
+        fields:
+            - {label: "Hero Link", name: "heroLink", widget: "string", required: false}
+            - {label: "Hero Goal", name: "heroGoal", widget: "string", required: false}
+            - {label: "Hero Summary", name: "heroSummary", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "community" # Used in routes, e.g., /admin/collections/blog
+    label: "Community" # Used in the UI
+    folder: "/_src/_includes/community" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Hero"
+        name: "hero"
+        widget: "object"
+        collpased: false
+        fields:
+            - {label: "Hero Link", name: "heroLink", widget: "string", required: false}
+            - {label: "Hero Goal", name: "heroGoal", widget: "string", required: false}
+            - {label: "Hero Summary", name: "heroSummary", widget: "text", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+  - name: "links" # Used in routes, e.g., /admin/collections/blog
+    label: "Links" # Used in the UI
+    folder: "/_src/_includes/links" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Name", name: "name", widget: "string"}
+      - {label: "URL", name: "url", widget: "string"}
+      - {label: "Type", name: "type", widget: "select", options: ["academy", "business", "community"]}
+  - name: "team" # Used in routes, e.g., /admin/collections/blog
+    label: "Our Teams" # Used in the UI
+    folder: "/_src/_includes/team" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{name}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Team", name: "title", default: "Team"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Name"
+        name: "name"
+        widget: "list"
+        fields:
+        - {label: "Team Name", name: "team", widget: "string"}
+        - label: "Team Member"
+          name: "member"
+          widget: "list"
+          summary: "{{fields.name}}"
+          fields: 
+            - {label: "Name", name: "name", widget: "string"}
+            - {label: "Title", name: "title", widget: "string"}
+            - {label: "Email", name: "email", widget: "string"}
+            - {label: "Thumbnail", name: "thumbnail", widget: "image", allow_multiple: false}
+  - name: "leadership" # Used in routes, e.g., /admin/collections/blog
+    label: "Our Leadership" # Used in the UI
+    folder: "/_src/_includes/leadership" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{title}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "Leadership", name: "title", default: "Team"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Team"
+        name: "name"
+        widget: "list"
+        fields:
+        - {label: "Team Name", name: "team", widget: "string"}
+        - label: "Team Member"
+          name: "member"
+          widget: "list"
+          summary: "{{fields.name}}"
+          fields: 
+            - {label: "Name", name: "name", widget: "string"}
+            - {label: "Title", name: "title", widget: "string", required: false}
+  - name: "history" # Used in routes, e.g., /admin/collections/blog
+    label: "Our History" # Used in the UI
+    folder: "/_src/_includes/history" # The path to the folder where the documents are stored
+    create: false # Allow users to create new documents in this collection
+    slug: "{{ nav }}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - {label: "History", name: "title", default: "History"}
+      - {label: 'History', name: "nav", widget: "hidden", defualt: "History"}
+      - {label: "Meta Description", name: "metaDescription", widget: "text", required: false}
+      - label: "Year"
+        name: "year"
+        widget: "list"
+        fields:
+        - {label: "Year", name: "year", widget: "string"}
+        - label: "Year Items"
+          name: "items"
+          widget: "list"
+          summary: "{{fields.item}}"
+          fields: 
+            - {label: "Item", name: "item", widget: "string"}

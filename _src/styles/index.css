@@ -1,0 +1,61 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+@import 'tailwindcss/forms';
+
+@layer base {
+  p {
+    @apply text-lg m-2;
+  }
+  h1 {
+    @apply text-4xl md:text-center font-serif;
+  }
+  h2 {
+    @apply text-3xl mt-4 mb-2 md:text-center font-serif;
+  }
+  h3 {
+    @apply text-2xl my-2 md:text-center font-serif;
+  }
+  h4 {
+    @apply text-xl my-2 md:text-center font-serif;
+  }
+  h5 {
+    @apply text-lg my-2 md:text-center font-serif;
+  }
+  h6 {
+    @apply text-sm my-2 md:text-center font-serif;
+  }
+  img {
+    @apply justify-center ml-auto mr-auto m-2;
+  }
+  input {
+    @apply p-1 border-2;
+  }
+  span {
+    @apply font-serif;
+  }
+  a {
+    @apply font-sans bg-gray-200;
+  }
+  ul {
+    @apply text-lg list-disc list-inside;
+  }
+  ol {
+    @apply text-lg m-6 list-decimal list-outside;
+  }
+  blockquote {
+    @apply border-l-2 text-xl ml-2 mr-4 my-12 py-2 px-4 text-center stacked;
+  }
+}
+@layer utilities {
+
+  /* I bookmarked the source, make sure to source it */
+  .stacked{
+    border: solid 2px;
+    padding: 20px 30px 20px 30px;
+    box-shadow: 13px 13px 0 0 white,
+                15px 15px 0 0 black,
+                15px 11px 0 0 black,
+                11px 15px 0 0 black;
+  }
+}
